@@ -6,6 +6,7 @@ import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { LinkFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { s3Storage as s3StoragePlugin } from '@payloadcms/storage-s3'
 import sharp from 'sharp' // editor-import
 import { UnderlineFeature } from '@payloadcms/richtext-lexical'
 import { ItalicFeature } from '@payloadcms/richtext-lexical'
@@ -26,6 +27,7 @@ import BeforeLogin from './payload/components/BeforeLogin'
 import { seed } from './payload/endpoints/seed'
 import { Footer } from './payload/globals/Footer/Footer'
 import { Header } from './payload/globals/Header/Header'
+import { S3_PLUGIN_CONFIG } from './payload/plugins/s3'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -101,6 +103,19 @@ export default buildConfig({
   ],
   globals: [Header, Footer],
   plugins: [
+    s3StoragePlugin({
+      ...S3_PLUGIN_CONFIG,
+      collections: {
+        media: {
+          disableLocalStorage: true,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          generateFileURL: (args: any) => {
+            return `https://${process.env.NEXT_PUBLIC_S3_HOSTNAME}/${args.prefix}/${args.filename}`
+          },
+          prefix: process.env.NEXT_PUBLIC_UPLOAD_PREFIX || 'media',
+        },
+      },
+    }),
     redirectsPlugin({
       collections: ['pages', 'posts'],
       overrides: {

@@ -24,14 +24,14 @@ export const Pages: CollectionConfig = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    livePreview: {
-      url: ({ data }) => {
-        const path = generatePreviewPath({
-          path: `/${typeof data?.slug === 'string' ? data.slug : ''}`,
-        })
-        return `${process.env.NEXT_PUBLIC_SERVER_URL}${path}`
-      },
-    },
+    // livePreview: {
+    //   url: ({ data }) => {
+    //     const path = generatePreviewPath({
+    //       path: `/${typeof data?.slug === 'string' ? data.slug : ''}`,
+    //     })
+    //     return `${process.env.NEXT_PUBLIC_SERVER_URL}${path}`
+    //   },
+    // },
     preview: (doc) =>
       generatePreviewPath({ path: `/${typeof doc?.slug === 'string' ? doc.slug : ''}` }),
     useAsTitle: 'title',
@@ -81,7 +81,7 @@ export const Pages: CollectionConfig = {
   versions: {
     drafts: {
       autosave: {
-        interval: 350, // We set this interval for optimal live preview
+        interval: 800, // Use 350 interval for optimal live preview
       },
     },
     maxPerDoc: 50,
