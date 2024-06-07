@@ -17,7 +17,7 @@ const nextConfig = {
         protocol: 'http',
       },
       {
-        hostname: process.env.NEXT_PUBLIC_SERVER_URL.replace(/https?:\/\//, ''),
+        hostname: process.env.NEXT_PUBLIC_VERCEL_URL.replace(/https?:\/\//, ''),
         port: '',
         protocol: 'https',
       },
