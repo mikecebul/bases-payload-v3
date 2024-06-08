@@ -29,7 +29,7 @@ export const Pages: CollectionConfig = {
         const path = generatePreviewPath({
           path: `/${typeof data?.slug === 'string' ? data.slug : ''}`,
         })
-        return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}${path}`
+        return `${process.env.NEXT_PUBLIC_SERVER_URL}${path}`
       },
     },
     preview: (doc) =>
