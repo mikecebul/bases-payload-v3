@@ -24,14 +24,14 @@ export const Pages: CollectionConfig = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    // livePreview: {
-    //   url: ({ data }) => {
-    //     const path = generatePreviewPath({
-    //       path: `/${typeof data?.slug === 'string' ? data.slug : ''}`,
-    //     })
-    //     return `${process.env.NEXT_PUBLIC_SERVER_URL}${path}`
-    //   },
-    // },
+    livePreview: {
+      url: ({ data }) => {
+        const path = generatePreviewPath({
+          path: `/${typeof data?.slug === 'string' ? data.slug : ''}`,
+        })
+        return `${process.env.NEXT_PUBLIC_VERCEL_URL}${path}`
+      },
+    },
     preview: (doc) =>
       generatePreviewPath({ path: `/${typeof doc?.slug === 'string' ? doc.slug : ''}` }),
     useAsTitle: 'title',
