@@ -12,6 +12,11 @@ const nextConfig = {
         protocol: 'https',
       },
       {
+        hostname: 'bases-payload-v3.mikecebul.dev',
+        port: '',
+        protocol: 'https',
+      },
+      {
         hostname: 'localhost',
         port: '3000',
         protocol: 'http',
