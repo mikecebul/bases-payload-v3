@@ -1,12 +1,8 @@
+import Image from 'next/image'
 import React from 'react'
 
-export const Logo = () => {
+export const Logo = ({ className }: { className?: string }) => {
   return (
-    /* eslint-disable @next/next/no-img-element */
-    <img
-      alt="Payload Logo"
-      className="max-w-[9.375rem] invert dark:invert-0"
-      src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/payload/src/admin/assets/images/payload-logo-light.svg"
-    />
+    <Image alt="BASES Logo" className={className} height={252} src="/BasesLogo.png" width={1024} />
   )
 }
