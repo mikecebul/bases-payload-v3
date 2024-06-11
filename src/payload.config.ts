@@ -122,9 +122,9 @@ export default buildConfig({
         access: {
           read: () => false,
         },
-        // fields: ({ defaultFields }) => {
-        //   return [...defaultFields]
-        // },
+        fields: ({ defaultFields }) => {
+          return [...defaultFields]
+        },
         hooks: {
           afterChange: [revalidateRedirect],
         },
