@@ -15,7 +15,7 @@ export interface Config {
     users: User;
     redirects: Redirect;
     forms: Form;
-    'form-submissions': FormSubmission;
+    leads: Lead;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -527,9 +527,9 @@ export interface Redirect {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "form-submissions".
+ * via the `definition` "leads".
  */
-export interface FormSubmission {
+export interface Lead {
   id: string;
   form: string | Form;
   submissionData?:
