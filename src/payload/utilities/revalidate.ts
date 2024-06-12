@@ -16,6 +16,10 @@ export const revalidate = async (args: {
 
     const res = await fetch(url)
 
+    if (collection === "posts") {
+      await fetch(baseUrl + '&path=' + '/posts')
+    }
+
     if (res.ok) {
       switch (type) {
         case 'path':
